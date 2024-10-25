@@ -1,6 +1,5 @@
 package co.edu.uniquindio.programacion3.parcial2.ejercicio1.mapping.mappers;
 import co.edu.uniquindio.programacion3.parcial2.ejercicio1.mapping.dto.UsuarioDto;
-import co.edu.uniquindio.programacion3.parcial2.ejercicio1.model.Usuario;
 
 
 public class UsuarioMapper {

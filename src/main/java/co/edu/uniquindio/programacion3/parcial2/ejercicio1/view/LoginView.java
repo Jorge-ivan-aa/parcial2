@@ -1,14 +1,9 @@
 package co.edu.uniquindio.programacion3.parcial2.ejercicio1.view;
 
 import java.net.URL;
-import java.util.Objects;
 import java.util.ResourceBundle;
 
 import co.edu.uniquindio.programacion3.parcial2.ejercicio1.controller.UsuarioController;
-import co.edu.uniquindio.programacion3.parcial2.ejercicio1.exception.login.CredencialesNoCoinciden;
-import co.edu.uniquindio.programacion3.parcial2.ejercicio1.exception.login.UsuarioNoExiste;
-import co.edu.uniquindio.programacion3.parcial2.ejercicio1.model.Sesion;
-import co.edu.uniquindio.programacion3.parcial2.ejercicio1.model.enums.TipoUsuario;
 import co.edu.uniquindio.programacion3.parcial2.ejercicio1.utils.ViewTools;
 import co.edu.uniquindio.programacion3.parcial2.ejercicio1.utils.respaldo.Persistencia;
 import io.github.palexdev.materialfx.controls.MFXPasswordField;

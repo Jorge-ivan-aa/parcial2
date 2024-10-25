@@ -1,4 +1,4 @@
-package co.edu.uniquindio.programacion3.parcial2.ejercio2Hilos;
+package co.edu.uniquindio.programacion3.parcial2.ejercio2;
 
 public class MainEjecutar {
     public static void main (String []args) throws InterruptedException {

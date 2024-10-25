@@ -1,4 +1,4 @@
-package co.edu.uniquindio.programacion3.parcial2.ejercio2Hilos;
+package co.edu.uniquindio.programacion3.parcial2.ejercio2;
 
 public class Hilo1 extends Thread{
     boolean runHilo1;

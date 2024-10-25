@@ -1,15 +1,13 @@
 package co.edu.uniquindio.programacion3.parcial2.ejercicio1;
 
+import co.edu.uniquindio.programacion3.parcial2.ejercicio1.model.Empleado;
 import co.edu.uniquindio.programacion3.parcial2.ejercicio1.model.ModelRepository;
-import co.edu.uniquindio.programacion3.parcial2.ejercicio1.model.Usuario;
-import co.edu.uniquindio.programacion3.parcial2.ejercicio1.model.persistencia.UsuarioPersistente;
+import co.edu.uniquindio.programacion3.parcial2.ejercicio1.model.persistencia.EmpleadoPersistente;
 import co.edu.uniquindio.programacion3.parcial2.ejercicio1.model.persistencia.ModelRepositoryRespaldo;
 import co.edu.uniquindio.programacion3.parcial2.ejercicio1.utils.respaldo.Persistencia;
 import lombok.Getter;
 
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.List;
 
 @Getter
@@ -18,19 +16,18 @@ public class ModelFactory {
     private ModelRepository modelRepository;
 
     // PERSISTENCIA
-    private final UsuarioPersistente usuarioPersistente;
+    private final EmpleadoPersistente empleadoPersistente;
 
     private ModelFactory() {
 
 
         modelRepository = cargaRespaldo();
-        usuarioPersistente = new UsuarioPersistente();
+        empleadoPersistente = new EmpleadoPersistente();
 
         if (modelRepository == null) {
             modelRepository = new ModelRepository();
             loadData();
         }
-        loadConfig();
     }
 
 
@@ -41,27 +38,17 @@ public class ModelFactory {
         return instance;
     }
 
-    public void loadConfig() {
-        String usuario = Persistencia.cargarConfiguracion("usuario");
-        String contrasena = Persistencia.cargarConfiguracion("contrasena");
-
-        Usuario admin = new Usuario("admin", usuario, contrasena);
-        admin.setAdministrador();
-
-        modelRepository.addUsuario(admin);
-    }
-
     public void loadData() {
-        List<Usuario> usuarios = null;
+        List<Empleado> empleados = null;
         try {
-            usuarios = usuarioPersistente.leer();
+            empleados = empleadoPersistente.leer();
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
 
-        if (usuarios != null) {
-            for (Usuario usuario : usuarios) {
-                modelRepository.addUsuario(usuario);
+        if (empleados != null) {
+            for (Empleado usuario : empleados) {
+                modelRepository.addEmpleado(usuario);
             }
         }
 

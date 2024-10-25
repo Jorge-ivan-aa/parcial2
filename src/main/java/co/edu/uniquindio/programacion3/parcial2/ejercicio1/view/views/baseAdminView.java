@@ -4,7 +4,6 @@ import co.edu.uniquindio.programacion3.parcial2.ejercicio1.controller.UsuarioCon
 import co.edu.uniquindio.programacion3.parcial2.ejercicio1.exception.crud.ElementoNoExiste;
 import co.edu.uniquindio.programacion3.parcial2.ejercicio1.exception.crud.ElementoYaExiste;
 import co.edu.uniquindio.programacion3.parcial2.ejercicio1.mapping.dto.UsuarioDto;
-import co.edu.uniquindio.programacion3.parcial2.ejercicio1.model.Usuario;
 import co.edu.uniquindio.programacion3.parcial2.ejercicio1.utils.ViewTools;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXML;
