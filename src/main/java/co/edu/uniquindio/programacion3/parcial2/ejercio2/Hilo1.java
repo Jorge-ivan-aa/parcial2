@@ -23,6 +23,7 @@ public class Hilo1 extends Thread{
     @Override
     public void run(){
         System.out.println("Hilo 1 iniciado.");
+        //S1
         numeroMenor=recorrer(m,0,0);
         int contador =0;
         while (runHilo1){
