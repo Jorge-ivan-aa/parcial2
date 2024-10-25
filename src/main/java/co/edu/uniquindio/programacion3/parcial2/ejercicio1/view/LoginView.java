@@ -10,6 +10,7 @@ import co.edu.uniquindio.programacion3.parcial2.ejercicio1.exception.login.Usuar
 import co.edu.uniquindio.programacion3.parcial2.ejercicio1.model.Sesion;
 import co.edu.uniquindio.programacion3.parcial2.ejercicio1.model.enums.TipoUsuario;
 import co.edu.uniquindio.programacion3.parcial2.ejercicio1.utils.ViewTools;
+import co.edu.uniquindio.programacion3.parcial2.ejercicio1.utils.respaldo.Persistencia;
 import io.github.palexdev.materialfx.controls.MFXPasswordField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -43,27 +44,24 @@ public class LoginView {
         String cedula = txtCedulaUsuario.getText();
 
         if (!ViewTools.hayCamposVacios(clave, cedula)) {
-            Sesion sesion = new Sesion(cedula);
+            String usuario = Persistencia.cargarConfiguracion("usuario");
+            String contrasena = Persistencia.cargarConfiguracion("contrasena");
 
-            try {
-                TipoUsuario tipoUsuario = sesion.ingresar(clave);
-                usuarioController.getFactory().getModelRepository().setSesion(sesion);
-                seleccionarInterfax(tipoUsuario, sesion.getUsuario().getNombre());
-                ViewTools.cerrarVentana(txtCedulaUsuario);
-
-            } catch (UsuarioNoExiste | CredencialesNoCoinciden e) {
-                ViewTools.mostrarMensaje("¡Lo sentimos!", null, e.getMessage(), Alert.AlertType.ERROR);
+            if (usuario.equals(cedula) && contrasena.equals(clave)) {
+                seleccionarInterfax();
+            } else {
+                ViewTools.mostrarMensaje("¡Lo sentimos!", null, "El usuario o contraseña son incorrectos", Alert.AlertType.ERROR);
             }
+
         } else {
             ViewTools.mostrarMensaje("¡Lo sentimos!", null, "Hay campos vacios.", Alert.AlertType.ERROR);
         }
 
     }
 
-    void seleccionarInterfax(TipoUsuario tipoUsuario, String usuario) {
-        if (Objects.requireNonNull(tipoUsuario) == TipoUsuario.ADMINISTRADOR) {
-            ViewTools.ventanaEmergente("templates/baseAdmin.fxml", "ICaja - Administrador", "styles/main.css");
-        }
+    void seleccionarInterfax() {
+            ViewTools.ventanaEmergente("templates/baseAdmin.fxml", "ICaja - Admin", "styles/main.css");
+            ViewTools.cerrarVentana(txtCedulaUsuario);
     }
 
     @FXML

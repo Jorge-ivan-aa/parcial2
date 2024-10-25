@@ -20,7 +20,7 @@ public class Persistencia {
     //------------------------------------ Cargar configuracion
     public static String cargarConfiguracion(String propiedad) {
         ResourceBundle config = ResourceBundle.getBundle(RUTA);
-        return "";
+        return config.getString(propiedad);
     }
 
     /**
