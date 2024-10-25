@@ -37,6 +37,8 @@ public class baseAdminView {
     @FXML
     private TextField txtNombreAdmin;
 
+
+
     @FXML
     void crearEmpleado() {
         String nombre = txtNombreAdmin.getText();
@@ -137,7 +139,7 @@ public class baseAdminView {
     private void mostrarInformacion(Empleado seleccionado) {
         if (seleccionado != null) {
             txtNombreAdmin.setText(seleccionado.getNombre());
-            txtCedulaAdmin.setText(seleccionado.getCedula());
+            txtCedulaAdmin.setText(seleccionado.getApellido());
             txtClaveAdmin.setText(seleccionado.getClave());
         }
     }
