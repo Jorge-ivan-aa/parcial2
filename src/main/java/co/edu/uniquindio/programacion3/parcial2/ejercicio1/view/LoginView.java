@@ -57,12 +57,6 @@ public class LoginView {
     }
 
     @FXML
-    void registrarUsuario(ActionEvent event) {
-        ViewTools.ventanaEmergente("templates/registroUsuario.fxml", "ICaja - Registro de usuario", "styles/main.css");
-        ViewTools.cerrarVentana(txtCedulaUsuario);
-    }
-
-    @FXML
     void initialize() {
 
     }

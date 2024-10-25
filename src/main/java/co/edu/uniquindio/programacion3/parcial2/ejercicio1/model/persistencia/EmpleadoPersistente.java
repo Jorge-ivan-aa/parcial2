@@ -12,33 +12,33 @@ public class EmpleadoPersistente implements Persistible<Empleado> {
 
 
     @Override
-    public void guardar(List<Empleado> usuarios) throws IOException {
+    public void guardar(List<Empleado> empleados) throws IOException {
         StringBuilder contenido = new StringBuilder();
-        for(Empleado usuario:usuarios)
+        for(Empleado empleado:empleados)
         {
             contenido.append(
-                    usuario.getId()).append("@@")
-                    .append(usuario.getNombre()).append("@@")
-                    .append(usuario.getApellido()).append("@@")
-                    .append(usuario.getIdDepartamento()).append("\n");
+                    empleado.getId()).append("$$")
+                    .append(empleado.getNombre()).append("$$")
+                    .append(empleado.getApellido()).append("$$")
+                    .append(empleado.getIdDepartamento()).append("\n");
         }
-        Persistencia.guardarArchivo("ruta_usuario", contenido.toString(), false);
+        Persistencia.guardarArchivo("empleado.txt", contenido.toString(), false);
     }
 
     @Override
     public List<Empleado> leer() throws IOException {
-        ArrayList<Empleado> usuarios = new ArrayList<>();
-        ArrayList<String> contenido = Persistencia.leerArchivo("ruta_usuario");
+        ArrayList<Empleado> empleados = new ArrayList<>();
+        ArrayList<String> contenido = Persistencia.leerArchivo("ruta_empleado");
         String[] linea;
         for (String texto : contenido) {
-            linea = texto.split("@@");
-            Empleado usuario = new Empleado();
-            usuario.setId(linea[0]);
-            usuario.setNombre(linea[1]);
-            usuario.setApellido(linea[2]);
-            usuario.setIdDepartamento(linea[3]);
-            usuarios.add(usuario);
+            linea = texto.split("$$");
+            Empleado empleado = new Empleado();
+            empleado.setId(linea[0]);
+            empleado.setNombre(linea[1]);
+            empleado.setApellido(linea[2]);
+            empleado.setIdDepartamento(linea[3]);
+            empleados.add(empleado);
         }
-        return usuarios;
+        return empleados;
     }
 }

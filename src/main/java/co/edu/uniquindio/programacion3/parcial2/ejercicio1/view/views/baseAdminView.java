@@ -1,52 +1,67 @@
 package co.edu.uniquindio.programacion3.parcial2.ejercicio1.view.views;
 
+import java.net.URL;
+import java.util.ResourceBundle;
+
 import co.edu.uniquindio.programacion3.parcial2.ejercicio1.controller.EmpleadoController;
-import co.edu.uniquindio.programacion3.parcial2.ejercicio1.exception.crud.ElementoNoExiste;
-import co.edu.uniquindio.programacion3.parcial2.ejercicio1.exception.crud.ElementoYaExiste;
+import co.edu.uniquindio.programacion3.parcial2.ejercicio1.exception.crud.*;
 import co.edu.uniquindio.programacion3.parcial2.ejercicio1.mapping.dto.EmpleadoDto;
 import co.edu.uniquindio.programacion3.parcial2.ejercicio1.model.Empleado;
 import co.edu.uniquindio.programacion3.parcial2.ejercicio1.utils.ViewTools;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
+import javafx.scene.control.Alert;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 
 public class baseAdminView {
-
-    EmpleadoController empleadoController = new EmpleadoController();
-
+    private final EmpleadoController empleadoController = new EmpleadoController();
 
     @FXML
-    private TableView<Empleado> tbEmpleadosAdmin;
+    private ResourceBundle resources;
 
     @FXML
-    private TableColumn<Empleado, String> tbcCedulaEmpleadoAdmin;
-
-
-    @FXML
-    private TableColumn<Empleado, String> tbcClaveEmpleadoAdmin;
+    private URL location;
 
     @FXML
-    private TableColumn<Empleado,String> tbcNombreEmpleadoAdmin;
+    private TableView<Empleado> tbUsuariosAdmin;
 
     @FXML
-    private TextField txtCedulaAdmin;
+    private TableColumn<Empleado, String> tbcApellidoEmpleado;
 
     @FXML
-    private TextField txtClaveAdmin;
+    private TableColumn<Empleado, String> tbcIdDepartamentoEmpleado;
 
     @FXML
-    private TextField txtNombreAdmin;
-
-
+    private TableColumn<Empleado, String> tbcIdEmpleado;
 
     @FXML
-    void crearEmpleado() {
-        String nombre = txtNombreAdmin.getText();
-        String cedula = txtCedulaAdmin.getText();
-        String clave = txtClaveAdmin.getText();
+    private TableColumn<Empleado, String> tbcNombreUsuarioEmpleado;
 
-        if (!ViewTools.hayCamposVacios(nombre, cedula, clave)) {
-            EmpleadoDto usuarioDto = new EmpleadoDto(nombre,  cedula, clave);
+    @FXML
+    private TextField txtApellidoEmpleado;
+
+    @FXML
+    private TextField txtIdDepartamentoEmpleado;
+
+    @FXML
+    private TextField txtIdEmpleado;
+
+    @FXML
+    private TextField txtNombreEmpleado;
+
+    
+    @FXML
+    void crearEmpleadoAction() {
+       String id = txtIdEmpleado.getText();
+        String nombre = txtNombreEmpleado.getText();
+        String apellido = txtApellidoEmpleado.getText();
+        String idDepartamento = txtIdDepartamentoEmpleado.getText();
+
+        if (!ViewTools.hayCamposVacios(id,  nombre,  apellido, idDepartamento)) {
+            EmpleadoDto usuarioDto = new EmpleadoDto(id,  nombre,  apellido, idDepartamento);
 
             try {
                 empleadoController.crear(usuarioDto);
@@ -60,23 +75,25 @@ public class baseAdminView {
 
         }
 
-        ViewTools.limpiarCampos(txtCedulaAdmin,
-                txtNombreAdmin,
-                txtClaveAdmin);
+        ViewTools.limpiarCampos(txtIdEmpleado,
+                txtNombreEmpleado,
+                txtApellidoEmpleado,
+                txtIdDepartamentoEmpleado);
     }
 
     @FXML
-    void actualizarEmpleado() {
-        String nombre = txtNombreAdmin.getText();
-        String cedula = txtCedulaAdmin.getText();
-        String clave = txtClaveAdmin.getText();
+    void actualizarUsuario() {
+        String id = txtIdEmpleado.getText();
+        String nombre = txtNombreEmpleado.getText();
+        String apellido = txtApellidoEmpleado.getText();
+        String idDepartamento = txtIdDepartamentoEmpleado.getText();
 
-        if (!ViewTools.hayCamposVacios(nombre,  cedula, clave)) {
-            EmpleadoDto usuarioDto = new EmpleadoDto(nombre,  cedula, clave);
+        if (!ViewTools.hayCamposVacios(id,  nombre,  apellido, idDepartamento)) {
+            EmpleadoDto usuarioDto = new EmpleadoDto(id,  nombre,  apellido, idDepartamento);
 
             try {
                 empleadoController.actualizar(usuarioDto);
-                String msj = "Se ha actualizado el usuario de cedula" + cedula + "correctamente";
+                String msj = "Se ha actualizado el usuario de cedula" + id + "correctamente";
                 ViewTools.mostrarMensaje("Información", null, msj, Alert.AlertType.INFORMATION);
 
             } catch (ElementoNoExiste e) {
@@ -86,19 +103,20 @@ public class baseAdminView {
             ViewTools.mostrarMensaje("Error", null, "Hay campos vacíos", Alert.AlertType.ERROR);
 
         }
-        ViewTools.limpiarCampos(txtCedulaAdmin,
-                txtNombreAdmin,
-                txtClaveAdmin);
+        ViewTools.limpiarCampos(txtIdEmpleado,
+                txtNombreEmpleado,
+                txtApellidoEmpleado,
+                txtIdDepartamentoEmpleado);
     }
 
     @FXML
-    void eliminarEmpleado() {
-        String cedula   = txtCedulaAdmin.getText();
+    void eliminarEmpleadoAction() {
+        String id   = txtIdEmpleado.getText();
 
-        if (!ViewTools.hayCamposVacios(cedula)) {
+        if (!ViewTools.hayCamposVacios(id)) {
             try {
-                empleadoController.eliminar(cedula);
-                String msj = "Se ha eliminado el usuario de cedula" + cedula + "correctamente";
+                empleadoController.eliminar(id);
+                String msj = "Se ha eliminado el usuario de cedula" + id + "correctamente";
                 ViewTools.mostrarMensaje("Información", null, msj, Alert.AlertType.INFORMATION);
             } catch (ElementoNoExiste e) {
                 ViewTools.mostrarMensaje("Error", null, e.getMessage(), Alert.AlertType.ERROR);
@@ -108,9 +126,10 @@ public class baseAdminView {
             ViewTools.mostrarMensaje("Error", null, "Hay campos vacíos", Alert.AlertType.ERROR);
         }
 
-        ViewTools.limpiarCampos(txtCedulaAdmin,
-                txtNombreAdmin,
-                txtClaveAdmin);
+        ViewTools.limpiarCampos(txtIdEmpleado,
+                txtNombreEmpleado,
+                txtApellidoEmpleado,
+                txtIdDepartamentoEmpleado);
     }
 
     @FXML
@@ -120,27 +139,29 @@ public class baseAdminView {
 
     private void initview() {
         initDataBinging();
-        tbEmpleadosAdmin.getItems().clear();
-        tbEmpleadosAdmin.setItems(empleadoController.getListaEmpleadoObservable());
+        tbUsuariosAdmin.getItems().clear();
+        tbUsuariosAdmin.setItems(empleadoController.getListaEmpleadoObservable());
         listenerSelectionEmpleado();
     }
 
     private void initDataBinging() {
-        tbcNombreEmpleadoAdmin.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNombre()));
-        tbcCedulaEmpleadoAdmin.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getCedula()));
-        tbcClaveEmpleadoAdmin.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getClave()));
+       tbcIdEmpleado.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getId()));
+        tbcNombreUsuarioEmpleado.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNombre()));
+        tbcApellidoEmpleado.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getApellido()));
+        tbcIdDepartamentoEmpleado.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getIdDepartamento()));
     }
 
     private void listenerSelectionEmpleado() {
-        tbEmpleadosAdmin.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection)
+        tbUsuariosAdmin.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection)
                 -> this.mostrarInformacion(newSelection));
     }
 
     private void mostrarInformacion(Empleado seleccionado) {
         if (seleccionado != null) {
-            txtNombreAdmin.setText(seleccionado.getNombre());
-            txtCedulaAdmin.setText(seleccionado.getApellido());
-            txtClaveAdmin.setText(seleccionado.getClave());
+            txtIdEmpleado.setText(seleccionado.getId());
+            txtNombreEmpleado.setText(seleccionado.getNombre());
+            txtApellidoEmpleado.setText(seleccionado.getApellido());
+            txtIdDepartamentoEmpleado.setText(seleccionado.getIdDepartamento());
         }
     }
 }

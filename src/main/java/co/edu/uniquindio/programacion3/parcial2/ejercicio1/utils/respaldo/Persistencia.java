@@ -20,6 +20,7 @@ public class Persistencia {
     //------------------------------------ Cargar configuracion
     public static String cargarConfiguracion(String propiedad) {
         ResourceBundle config = ResourceBundle.getBundle(RUTA);
+        System.out.println("config: " + config.getString(propiedad));
         return config.getString(propiedad);
     }
 
@@ -29,7 +30,7 @@ public class Persistencia {
      */
     public static void guardarArchivo(String propiedad, String contenido, Boolean flagAnexarContenido) throws IOException {
 
-        FileWriter fw = new FileWriter(cargarConfiguracion(propiedad), flagAnexarContenido);
+        FileWriter fw = new FileWriter("src/main/resources/persistencia/archivos/" + propiedad, flagAnexarContenido);
         BufferedWriter bfw = new BufferedWriter(fw);
         bfw.write(contenido);
         bfw.close();
