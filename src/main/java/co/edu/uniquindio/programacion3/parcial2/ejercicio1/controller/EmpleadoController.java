@@ -33,39 +33,39 @@ public class EmpleadoController implements GenericController<EmpleadoDto, Emplea
         listaEmpleadoObservable.clear();
         listaEmpleadoObservable.addAll(this.factory.getModelRepository().getListaEmpleados());
         persistir();
-        registrarLog(1,"Se sincronizaron los usuarios.");
+        registrarLog(1,"Se sincronizaron los empleados.");
     }
 
     @Override
     public void crear(EmpleadoDto empladoDto) throws ElementoYaExiste {
         
         try {
-            consultar(empladoDto.id());
-            registrarLog(2,"No se puede crear el elemento, el usuario ya existe");
-            throw new ElementoYaExiste("No se puede crear el elemento, el usuario ya existe");
+            consultar(empladoDto.Id());
+            registrarLog(2,"No se puede crear el elemento, el empleado ya existe");
+            throw new ElementoYaExiste("No se puede crear el elemento, el empleado ya existe");
             
         } catch (ElementoNoExiste ignored) {
-            Empleado nuevoEmpleado = EmpleadoMapper.empladoDtoToEmpleado(empladoDto);
+            Empleado nuevoEmpleado = EmpleadoMapper.empleadoDtoToEmpleado(empladoDto);
             factory.getModelRepository().addEmpleado(nuevoEmpleado);
             listaEmpleadoObservable.add(nuevoEmpleado);
             sincronizarData();
-            registrarLog(1,"Se ha creado el usuario " + empladoDto.nombre());
+            registrarLog(1,"Se ha creado el empleado " + empladoDto.Nombre());
             
         }
     }
 
     @Override
     public Empleado consultar(String id) throws ElementoNoExiste {
-        registrarLog(1,"Se consultó el usuario");
+        registrarLog(1,"Se consultó el empleado");
 
         ArrayList<Empleado> Empleados = this.factory.getModelRepository().getListaEmpleados();
-        for (Empleado usuario : Empleados) {
-            if (usuario.getId().equals(id)) {
-                return usuario;
+        for (Empleado empleado : Empleados) {
+            if (empleado.getId().equals(id)) {
+                return empleado;
             }
         }
         
-        throw new ElementoNoExiste("El usuario no existe.");
+        throw new ElementoNoExiste("El empleado no existe.");
     }    
 
     @Override
@@ -74,7 +74,7 @@ public class EmpleadoController implements GenericController<EmpleadoDto, Emplea
             Empleado eliminable = consultar(id);
             factory.getModelRepository().removeEmpleado(eliminable);
             sincronizarData();
-            registrarLog(1,"Se eliminó el usuario de id " + id + ".");
+            registrarLog(1,"Se eliminó el empleado de id " + id + ".");
 
         } catch (ElementoNoExiste e) {
             registrarLog(2,"No se pudo eliminar el elemento, " + e.getMessage());
@@ -85,11 +85,13 @@ public class EmpleadoController implements GenericController<EmpleadoDto, Emplea
     @Override
     public void actualizar(EmpleadoDto empladoDto) throws ElementoNoExiste {
         try {
-            Empleado actualizable = consultar(empladoDto.id());
-            actualizable.setNombre(empladoDto.nombre());
-            actualizable.setClave(empladoDto.clave());
+            Empleado actualizable = consultar(empladoDto.Id());
+            actualizable.setNombre(empladoDto.Nombre());
+            actualizable.setApellido(empladoDto.Apellido());
+            actualizable.setIdDepartamento(empladoDto.IdDepartamento());
+            
             sincronizarData();
-            registrarLog(1,"Se actualizó el usuario de id " + actualizable.getCedula() + " correctamente.");
+            registrarLog(1,"Se actualizó el empleado de id " + actualizable.getId() + " correctamente.");
 
         } catch (ElementoNoExiste e) {
             registrarLog(2,"No se pudo actualizar el elemento, " + e.getMessage());
@@ -99,9 +101,9 @@ public class EmpleadoController implements GenericController<EmpleadoDto, Emplea
 
     @Override
     public void persistir() {
-        List<Empleado> usuarios = factory.getModelRepository().getListaEmpleados();
+        List<Empleado> empleados = factory.getModelRepository().getListaEmpleados();
         try {
-            factory.getEmpleadoPersistente().guardar(usuarios);
+            factory.getEmpleadoPersistente().guardar(empleados);
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }

@@ -25,8 +25,6 @@ public class ModelFactory {
     private final ProyectoPersistente proyectoPersistente;
 
     private ModelFactory() {
-
-
         modelRepository = cargaRespaldo();
         empleadoPersistente = new EmpleadoPersistente();
         departamentoPersistente = new DepartamentoPersistente();
