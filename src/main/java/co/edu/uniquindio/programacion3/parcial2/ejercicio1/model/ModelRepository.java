@@ -12,28 +12,25 @@ import lombok.ToString;
 @ToString
 public class ModelRepository implements Serializable {
 
-    private ArrayList<Usuario> listaUsuarios;
-
-    private Sesion sesion;
+    private ArrayList<Empleado> listaEmpleados;
 
     public ModelRepository() {
-        this.listaUsuarios = new ArrayList<>();
-        this.sesion = null;
+        this.listaEmpleados = new ArrayList<>();
     }
 
 
     // agregar elementos -------------
-    public void addUsuario(Usuario usuario) {
-        this.listaUsuarios.add(usuario);
+    public void addEmpleado(Empleado usuario) {
+        this.listaEmpleados.add(usuario);
     }
 
 
     // remover elementos -------------
-    public void removeUsuario(int index) {
-        this.listaUsuarios.remove(index);
+    public void removeEmpleado(int index) {
+        this.listaEmpleados.remove(index);
     }
-    public void removeUsuario(Usuario usuario) {
-        this.listaUsuarios.remove(usuario);
+    public void removeEmpleado(Empleado usuario) {
+        this.listaEmpleados.remove(usuario);
     }
 
 }

@@ -10,13 +10,13 @@ import lombok.ToString;
 @Setter
 @ToString
 @NoArgsConstructor
-public class Proyectos {
+public class Proyecto {
     private  String idProyecto;
     private String nombreProyecto;
     private String idDepartamentoResponsable;
     public static final long serialVersionID = 8L;
 
-    public Proyectos(String idProyecto, String nombreProyecto, String idDepartamentoResponsable) {
+    public Proyecto(String idProyecto, String nombreProyecto, String idDepartamentoResponsable) {
         this.idProyecto = idProyecto;
         this.nombreProyecto = nombreProyecto;
         this.idDepartamentoResponsable = idDepartamentoResponsable;
