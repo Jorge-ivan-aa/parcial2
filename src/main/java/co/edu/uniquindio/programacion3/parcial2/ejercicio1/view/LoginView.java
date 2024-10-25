@@ -3,7 +3,7 @@ package co.edu.uniquindio.programacion3.parcial2.ejercicio1.view;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import co.edu.uniquindio.programacion3.parcial2.ejercicio1.controller.UsuarioController;
+import co.edu.uniquindio.programacion3.parcial2.ejercicio1.controller.EmpleadoController;
 import co.edu.uniquindio.programacion3.parcial2.ejercicio1.utils.ViewTools;
 import co.edu.uniquindio.programacion3.parcial2.ejercicio1.utils.respaldo.Persistencia;
 import io.github.palexdev.materialfx.controls.MFXPasswordField;
@@ -13,9 +13,6 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 
 public class LoginView {
-
-    UsuarioController usuarioController = new UsuarioController();
-
     @FXML
     private TextField txtCedulaUsuario;
 

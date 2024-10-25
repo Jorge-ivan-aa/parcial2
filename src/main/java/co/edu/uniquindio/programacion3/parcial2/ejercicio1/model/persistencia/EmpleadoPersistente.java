@@ -1,7 +1,6 @@
 package co.edu.uniquindio.programacion3.parcial2.ejercicio1.model.persistencia;
 
 import co.edu.uniquindio.programacion3.parcial2.ejercicio1.model.Empleado;
-import co.edu.uniquindio.programacion3.parcial2.ejercicio1.model.enums.TipoEmpleado;
 import co.edu.uniquindio.programacion3.parcial2.ejercicio1.model.services.Persistible;
 import co.edu.uniquindio.programacion3.parcial2.ejercicio1.utils.respaldo.Persistencia;
 
