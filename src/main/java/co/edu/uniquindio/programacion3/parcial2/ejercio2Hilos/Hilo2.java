@@ -4,7 +4,6 @@ public class Hilo2 extends Thread {
     boolean runHilo2;
     Double promedioMatriz;
 
-
     public Double getPromedioMatriz(){
         return promedioMatriz;
     }
@@ -38,7 +37,7 @@ public class Hilo2 extends Thread {
                 runHilo2 = false;
             contador++;
         }
-        System.out.println("Promedio de la matriz= "+promedioMatriz);
+        System.out.println("Promedio de la matriz: " + promedioMatriz);
         System.out.println("Hilo 2 terminado.");
 
     }
