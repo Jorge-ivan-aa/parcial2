@@ -15,12 +15,14 @@ public class MainEjecutar {
         t1.join();
         t2.join();
 
-        //Obtencion de resultados S3
+        //Obtencion de resultados para S3
         int a=t1.getNumeroMenor();
         Double b=t2.getPromedioMatriz();
         Double c;
+        //S3
         if(b!=0){
             c=a/b;
+            //S4
             System.out.println("Resultado de C: " + c);
         }else{
             System.out.println("Resultado no valido. ");
