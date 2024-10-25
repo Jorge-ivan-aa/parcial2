@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<TabPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.programacion3.parcial2.ejercicio1.view.views.baseAdminView">
+    <Tab text="Usuario">
+      <AnchorPane layoutX="168.0" layoutY="54.0" prefHeight="615.0" prefWidth="1058.0">
+         <children>
+              <SplitPane dividerPositions="0.5474683544303798" layoutX="26.0" layoutY="23.0" orientation="VERTICAL" prefHeight="615.0" prefWidth="1226.0">
+                  <items>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="196.0" prefWidth="607.0">
+                          <children>
+                              <GridPane layoutX="95.0" layoutY="16.0" prefHeight="302.0" prefWidth="1034.0">
+                                  <columnConstraints>
+                                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="304.0" minWidth="10.0" prefWidth="197.86666870117188" />
+                                      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="359.00004882812505" minWidth="0.0" prefWidth="247.00004882812502" />
+                                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="229.60003662109375" minWidth="10.0" prefWidth="143.06662597656248" />
+                                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="285.6" minWidth="10.0" prefWidth="195.3333740234375" />
+                                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="311.0" minWidth="10.0" prefWidth="283.46660156250005" />
+                                  </columnConstraints>
+                                  <rowConstraints>
+                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                  </rowConstraints>
+                                  <children>
+                                      <Label text="Nombre:" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                                          <font>
+                                              <Font name="Georgia Italic" size="18.0" />
+                                          </font>
+                                      </Label>
+                                      <TextField fx:id="txtNombreAdmin" prefHeight="31.0" prefWidth="262.0" style="-fx-background-radius: 10;" GridPane.columnIndex="1" />
+                                      <Label text="Cédula:" GridPane.columnIndex="3" GridPane.halignment="CENTER">
+                                          <font>
+                                              <Font name="Georgia Italic" size="18.0" />
+                                          </font>
+                                      </Label>
+                                      <TextField fx:id="txtCedulaAdmin" prefHeight="31.0" prefWidth="188.0" style="-fx-background-radius: 10;" GridPane.columnIndex="4" GridPane.halignment="LEFT" GridPane.hgrow="SOMETIMES" GridPane.vgrow="SOMETIMES">
+                                          <GridPane.margin>
+                                              <Insets left="5.0" />
+                                          </GridPane.margin>
+                                      </TextField>
+                                      <Label GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                          <font>
+                                              <Font name="Georgia Italic" size="18.0" />
+                                          </font>
+                                      </Label>
+                                      <Label text="Clave:" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                          <font>
+                                              <Font name="Georgia Italic" size="18.0" />
+                                          </font>
+                                      </Label>
+                                      <TextField fx:id="txtClaveAdmin" prefHeight="31.0" prefWidth="262.0" style="-fx-background-radius: 10;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                      <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#crearUsuario" prefHeight="40.0" prefWidth="117.0" style="-fx-background-radius: 10;" text="Agregar" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="TOP">
+                                          <font>
+                                              <Font name="Georgia Bold Italic" size="18.0" />
+                                          </font>
+                                      </Button>
+                                      <Button alignment="BOTTOM_CENTER" mnemonicParsing="false" onAction="#actualizarUsuario" prefHeight="40.0" prefWidth="133.0" style="-fx-background-radius: 10;" text="Actualizar" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="4" GridPane.valignment="TOP">
+                                          <font>
+                                              <Font name="Georgia Bold Italic" size="18.0" />
+                                          </font>
+                                      </Button>
+                                      <Button alignment="BOTTOM_CENTER" mnemonicParsing="false" onAction="#eliminarUsuario" prefHeight="40.0" prefWidth="135.0" style="-fx-background-radius: 10;" text="Eliminar" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="4" GridPane.valignment="TOP">
+                                          <font>
+                                              <Font name="Georgia Bold Italic" size="18.0" />
+                                          </font>
+                                      </Button>
+                                  </children>
+                              </GridPane>
+                          </children>
+                      </AnchorPane>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="221.0" prefWidth="605.0">
+                          <children>
+                              <TableView fx:id="tbUsuariosAdmin" layoutX="1.0" prefHeight="273.0" prefWidth="1227.0">
+                                  <columns>
+                                      <TableColumn fx:id="tbcNombreUsuarioAdmin" prefWidth="321.0" style="-fx-background-radius: 10;" text="Nombre" />
+                                      <TableColumn fx:id="tbcCedulaUsuarioAdmin" prefWidth="351.0" style="-fx-background-radius: 10;" text="Cédula " />
+                                      <TableColumn fx:id="tbcClaveUsuarioAdmin" prefWidth="122.0" style="-fx-background-radius: 10;" text="Clave" />
+                                  </columns>
+                              </TableView>
+                          </children>
+                      </AnchorPane>
+                  </items>
+              </SplitPane>
+         </children>
+      </AnchorPane>
+    </Tab>
+</TabPane>
