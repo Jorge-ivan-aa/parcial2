@@ -5,11 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7fe2f72c-f909-498e-9db6-76831b7d84fb" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/programacion3/parcial2/ejercicio1/model/Asignacion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/&quot;persistencia.archivos.usuario.txt&quot;" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/programacion3/parcial2/ejercicio1/mapping/dto/DepartamentoDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/programacion3/parcial2/ejercicio1/mapping/dto/ProyectoDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/programacion3/parcial2/ejercicio1/mapping/mappers/DepartamentoMapper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/programacion3/parcial2/ejercicio1/model/ModelRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/programacion3/parcial2/ejercicio1/model/ModelRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/programacion3/parcial2/ejercicio1/model/Proyectos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/programacion3/parcial2/ejercicio1/model/Proyecto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/programacion3/parcial2/ejercicio1/ModelFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/programacion3/parcial2/ejercicio1/ModelFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/programacion3/parcial2/ejercicio1/mapping/dto/UsuarioDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/programacion3/parcial2/ejercicio1/mapping/dto/EmpleadoDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/programacion3/parcial2/ejercicio1/mapping/mappers/UsuarioMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/programacion3/parcial2/ejercicio1/mapping/mappers/empleadoMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/programacion3/parcial2/ejercicio1/view/views/RegistroUsuarioView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/programacion3/parcial2/ejercicio1/view/views/RegistroUsuarioView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/persistencia/config.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/persistencia/config.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
